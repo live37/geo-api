@@ -1,1 +1,1 @@
-# geo-maxmind-api
+# geo-api
