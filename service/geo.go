@@ -18,5 +18,14 @@ func (s *_GeoService) Init(path string) {
 }
 
 func (s *_GeoService) GetIPLocation(ip string) *api.IPLocation {
-	return s.geoApi.Geo(ip)
+	location := s.geoApi.Geo(ip)
+	if location == nil {
+		location = &api.IPLocation{
+			Country:  "未知",
+			Province: "未知",
+			City:     "未知",
+			ISP:      "未知",
+		}
+	}
+	return location
 }
