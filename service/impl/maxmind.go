@@ -3,9 +3,10 @@ package impl
 import (
 	"fmt"
 	"geo-api/service/api"
-	"github.com/oschwald/maxminddb-golang"
 	"log"
 	"net"
+
+	"github.com/oschwald/maxminddb-golang"
 )
 
 type MaxMindService struct {
@@ -22,7 +23,7 @@ func (s *MaxMindService) Init(path string) {
 
 }
 
-func (s *MaxMindService) Geo(ip string) *api.IPLocation {
+func (s *MaxMindService) Geo(ip string, version api.IPVersion) *api.IPLocation {
 	type GeoRecord struct {
 		Country struct {
 			ISOCode string            `maxminddb:"iso_code"`

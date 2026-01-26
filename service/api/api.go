@@ -1,5 +1,12 @@
 package api
 
+type IPVersion string
+
+const (
+	IPv4 IPVersion = "ipv4"
+	IPv6 IPVersion = "ipv6"
+)
+
 type IPLocation struct {
 	// 国家
 	Country string `json:"country"`
@@ -13,5 +20,5 @@ type IPLocation struct {
 
 type GeoApi interface {
 	Init(path string)
-	Geo(ip string) *IPLocation
+	Geo(ip string, version IPVersion) *IPLocation
 }
