@@ -80,13 +80,13 @@ func (s *Ip2regionService) parseRegion(regionStr string) *api.IPLocation {
 		}
 
 		// 处理省份信息
-		if parts[2] != "" && parts[2] != "0" {
-			loc.Province = parts[2]
+		if parts[1] != "" && parts[1] != "0" {
+			loc.Province = parts[1]
 		}
 
 		// 处理城市信息
-		if parts[3] != "" && parts[3] != "0" {
-			loc.City = parts[3]
+		if parts[2] != "" && parts[2] != "0" {
+			loc.City = parts[2]
 			// 如果城市包含省份信息，尝试提取纯城市名
 			if strings.Contains(loc.City, loc.Province) {
 				loc.City = strings.Replace(loc.City, loc.Province, "", 1)
@@ -94,7 +94,7 @@ func (s *Ip2regionService) parseRegion(regionStr string) *api.IPLocation {
 		}
 
 		// 处理ISP信息
-		if parts[4] != "" && parts[4] != "0" {
+		if parts[3] != "" && parts[3] != "0" {
 			loc.ISP = parts[4]
 		}
 	}
